@@ -63,7 +63,8 @@ Each piece creates a `PaymentApplication` and updates both sides' balances and s
 Prerequisites: JDK 17 and Docker Desktop. Maven is not needed; the wrapper downloads it.
 
 ```powershell
-docker compose up -d            # PostgreSQL 17 on localhost:5434 (db/user/password: cashapp)
+Copy-Item .env.example .env     # once: then set your own password in .env (git-ignored)
+docker compose up -d            # PostgreSQL 17 on localhost:5434, login from .env
 .\mvnw.cmd spring-boot:run      # API on http://localhost:8080
 ```
 
