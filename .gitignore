@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Local notes (not part of the project) ###
+CLAUDE.md
