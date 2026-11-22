@@ -1,4 +1,4 @@
-package com.siddharth.cashapp;
+package com.siddharth.cashapp.controller;
 
 import java.util.Map;
 
