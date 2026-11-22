@@ -1,0 +1,23 @@
+# Local PostgreSQL for cashapp.
+# Start:  docker compose up -d      Stop:  docker compose down      Wipe data:  docker compose down -v
+# Host port is 5434 because a locally installed PostgreSQL 17 already uses 5433 (and Postgres 15 uses 5432).
+services:
+  postgres:
+    image: postgres:17
+    container_name: cashapp-postgres
+    environment:
+      POSTGRES_DB: cashapp
+      POSTGRES_USER: cashapp
+      POSTGRES_PASSWORD: cashapp   # local development only
+    ports:
+      - "5434:5432"
+    volumes:
+      - cashapp-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cashapp -d cashapp"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  cashapp-data:
